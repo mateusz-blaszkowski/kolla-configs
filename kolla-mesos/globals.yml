@@ -22,7 +22,7 @@ docker_namespace: "kollaglue"
 # Networking options
 ####################
 network_interface: "lo"
-neutron_external_interface: "lo"
+neutron_external_interface: "p1p2"
 
 ####################
 # Resources options
