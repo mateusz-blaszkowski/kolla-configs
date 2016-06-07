@@ -1,0 +1,14 @@
+[glance_store]
+#default_store = file
+#filesystem_store_datadir = /var/lib/glance/images/
+
+stores = file, http, swift
+default_store = swift
+swift_store_auth_version = 1
+swift_store_auth_address = http://10.91.97.144:8081/auth/1.0
+swift_store_user = glance:swift
+swift_store_key = glance_store_key
+swift_store_container = glance
+swift_store_create_container_on_put = True
+
+
