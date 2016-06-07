@@ -3,7 +3,10 @@
 debug = True
 console_topic = console
 console_host = {{ get_ip_address(api_interface) }}
-
+workers = 4
+osapi_compute_workers = 4
+ec2_workers = 4
+metadata_workers = 2
 
 api_paste_config = /etc/nova/api-paste.ini
 state_path = /var/lib/nova
@@ -162,5 +165,8 @@ serialproxy_port = 6082
 
 [cors]
 allowed_origin = *
+
+[conductor]
+workers = 2
 
 
