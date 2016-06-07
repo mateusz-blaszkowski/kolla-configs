@@ -12,6 +12,7 @@ host_ip = {{  get_ip_address(api_interface) }}
 [conductor]
 api_url = http://{{ ironic_api_host }}:{{ ironic_api_port }}
 clean_nodes = false
+automated_clean = false
 {% endif %}
 
 {% if service_name == 'openstack/ironic/ironic-inspector' %}
@@ -40,6 +41,12 @@ admin_tenant_name = service
 
 [glance]
 glance_host = {{ glance_api_host }}
+swift_container = glance
+swift_api_version = v1
+swift_endpoint_url = http://10.91.97.144:8081
+swift_temp_url_key = glance_temp_url_key
+temp_url_endpoint_type=radosgw
+
 
 [neutron]
 url = http://{{ neutron_server_host }}:{{ neutron_server_port }}
@@ -48,7 +55,8 @@ url = http://{{ neutron_server_host }}:{{ neutron_server_port }}
 rabbit_userid = {{ rabbitmq_user }}
 rabbit_password = {{ rabbitmq_password }}
 rabbit_ha_queues = true
-rabbit_hosts = {{ list_ips_by_service('infra/rabbitmq/rabbitmq', rabbitmq_port) }}
+#rabbit_hosts = {{ list_ips_by_service('infra/rabbitmq/rabbitmq', rabbitmq_port) }}
+rabbit_hosts = 10.91.97.32:5672
 
 [console]
 terminal = ironic-console-server
