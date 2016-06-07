@@ -128,8 +128,7 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 # memcached set CACHES to something like
 CACHES = {
     'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': '{{ list_ips_by_service('infra/memcached/memcached', memcached_port) }}'
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache'
     }
 }
 
@@ -151,7 +150,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 #]
 
 OPENSTACK_HOST = "{{ keystone_auth_host }}"
-OPENSTACK_KEYSTONE_URL = "http://%s:{{ keystone_public_port }}/v3" % OPENSTACK_HOST
+OPENSTACK_KEYSTONE_URL = "http://10.91.97.32:{{ keystone_public_port }}/v3"
 OPENSTACK_KEYSTONE_DEFAULT_ROLE = "_member_"
 
 # Enables keystone web single-sign-on if set to True.
