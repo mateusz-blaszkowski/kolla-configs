@@ -1,6 +1,7 @@
 # ironic.conf
 [DEFAULT]
-debug = {{ ironic_logging_debug }}
+debug = True
+verbose = True
 enabled_drivers = pxe_ipmitool,agent_ipmitool
 
 {% if service_name == 'openstack/ironic/ironic-api' %}
@@ -60,3 +61,8 @@ rabbit_hosts = 10.91.97.32:5672
 
 [console]
 terminal = ironic-console-server
+
+[pxe]
+tftp_server = 192.168.0.10
+#pxe_append_params
+
