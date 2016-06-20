@@ -26,4 +26,13 @@ password = {{ glance_keystone_password }}
 flavor = keystone
 
 [oslo_messaging_notifications]
-driver = noop
+driver = messaging
+notification_topics = searchlight_indexer
+
+[oslo_messaging_rabbit]
+rabbit_userid = {{ rabbitmq_user }}
+rabbit_password = {{ rabbitmq_password }}
+rabbit_ha_queues = true
+rabbit_hosts = {{ rabbitmq_address }}
+
+
